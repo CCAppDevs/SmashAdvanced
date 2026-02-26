@@ -4,33 +4,80 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<div class="container">
 
-<div>
-    <h4>Game</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Requirements)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Requirements)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.GameId">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <!-- Top Banner -->
+    <div class="row">
+        <img src="/images/game-splat.jpeg" alt="Game Cover">
+        <div class="hero-info">
+            <h1>@Html.DisplayFor(model => model.Name)</h1>
+            <div class="tags">
+                <span>Action</span>
+                <span>Indie</span>
+                <span>Pixel Art</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+
+        <!-- MAIN CONTENT -->
+        <div class="col">
+
+            <section>
+                <h2>About the Game</h2>
+                <p>
+                    @Html.DisplayFor(model => model.Description)
+                </p>
+            </section>
+
+            <section class="features">
+                <h2>Features</h2>
+                <ul>
+                    <li>Fast-paced combat system</li>
+                    <li>Unique pixel-art style</li>
+                    <li>Original soundtrack</li>
+                    <li>Multiple endings</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Screenshots</h2>
+                <div class="gallery">
+                    <img src="/images/game-screenshot.jpg" alt="">
+                    <img src="/images/game-screenshot.jpg" alt="">
+                    <img src="/images/game-screenshot.jpg" alt="">
+                </div>
+            </section>
+
+            <section>
+                <h2>Devlog</h2>
+                <div class="devlog-entry">
+                    <strong>Update 1.1</strong>
+                    <p>Added new level and improved enemy AI.</p>
+                </div>
+                <div class="devlog-entry">
+                    <strong>Launch Day</strong>
+                    <p>The game is officially released!</p>
+                </div>
+            </section>
+
+        </div>
+
+        <!-- SIDEBAR -->
+        <div class="col">
+            <div class="price">$9.99</div>
+            <a href="#" class="button">Download Now</a>
+            <a href="#" class="button" style="background:#333;">Add to Collection</a>
+
+            <div class="meta">
+                <p><strong>Status:</strong> Released</p>
+                <p><strong>Platform:</strong> Windows, Mac</p>
+                <p><strong>Author:</strong> Your Studio Name</p>
+                <p><strong>Updated:</strong> Feb 2026</p>
+            </div>
+        </div>
+
+    </div>
+
 </div>

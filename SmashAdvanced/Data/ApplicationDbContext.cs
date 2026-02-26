@@ -7,6 +7,12 @@ namespace SmashAdvanced.Data
     public class ApplicationDbContext : IdentityDbContext
     {
         public DbSet<Game> Games { get; set; }
+        public DbSet<Platform> Platforms { get; set; }
+        public DbSet<Tag> Tags { get; set; }
+        public DbSet<GamePlatform> GamePlatforms { get; set; }
+        public DbSet<GameTag> GameTags { get; set; }
+        public DbSet<GameFeature> Features { get; set; }
+        public DbSet<GameScreenshot> GameScreenshots { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)

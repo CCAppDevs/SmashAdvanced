@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SmashAdvanced.Data;
 
@@ -11,9 +12,11 @@ using SmashAdvanced.Data;
 namespace SmashAdvanced.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260226201340_AddedASchema")]
+    partial class AddedASchema
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -262,16 +265,11 @@ namespace SmashAdvanced.Data.Migrations
                     b.Property<double>("RetailPrice")
                         .HasColumnType("float");
 
-                    b.Property<int>("TitleImageGameScreenshotId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Version")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("GameId");
-
-                    b.HasIndex("TitleImageGameScreenshotId");
 
                     b.ToTable("Games");
                 });
@@ -453,17 +451,6 @@ namespace SmashAdvanced.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("SmashAdvanced.Models.Game", b =>
-                {
-                    b.HasOne("SmashAdvanced.Models.GameScreenshot", "TitleImage")
-                        .WithMany()
-                        .HasForeignKey("TitleImageGameScreenshotId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("TitleImage");
                 });
 
             modelBuilder.Entity("SmashAdvanced.Models.GameFeature", b =>
