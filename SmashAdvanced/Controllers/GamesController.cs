@@ -54,7 +54,7 @@ namespace SmashAdvanced.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("GameId,Name,Description,Requirements")] Game game)
+        public async Task<IActionResult> Create([Bind("GameId,Name,Description,Requirements,Version,Author,RetailPrice,DownloadUrl,LastUpdated,ReleaseStatus")] Game game)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +86,7 @@ namespace SmashAdvanced.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("GameId,Name,Description,Requirements")] Game game)
+        public async Task<IActionResult> Edit(int id, [Bind("GameId,Name,Description,Requirements,Version,Author,RetailPrice,DownloadUrl,LastUpdated,ReleaseStatus")] Game game)
         {
             if (id != game.GameId)
             {

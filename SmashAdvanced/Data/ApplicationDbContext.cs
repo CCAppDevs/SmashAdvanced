@@ -17,6 +17,19 @@ namespace SmashAdvanced.Data
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
+
+        }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+
+            builder.Entity<Game>().Navigation(g => g.GameTags).AutoInclude();
+            builder.Entity<Game>().Navigation(g => g.GamePlatforms).AutoInclude();
+            builder.Entity<Game>().Navigation(g => g.GameFeatures).AutoInclude();
+            builder.Entity<Game>().Navigation(g => g.GameScreenshots).AutoInclude();
+            builder.Entity<GamePlatform>().Navigation(gp => gp.Platform).AutoInclude();
+            builder.Entity<GameTag>().Navigation(gt => gt.Tag).AutoInclude();
         }
     }
 }

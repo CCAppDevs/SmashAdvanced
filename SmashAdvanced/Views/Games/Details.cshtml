@@ -12,9 +12,10 @@
         <div class="hero-info">
             <h1>@Html.DisplayFor(model => model.Name)</h1>
             <div class="tags">
-                <span>Action</span>
-                <span>Indie</span>
-                <span>Pixel Art</span>
+                @foreach (var gameTag in Model.GameTags)
+                {
+                    <span>@gameTag.Tag.Name</span>
+                }
             </div>
         </div>
     </div>
@@ -34,19 +35,20 @@
             <section class="features">
                 <h2>Features</h2>
                 <ul>
-                    <li>Fast-paced combat system</li>
-                    <li>Unique pixel-art style</li>
-                    <li>Original soundtrack</li>
-                    <li>Multiple endings</li>
+                    @foreach (var gameFeature in Model.GameFeatures)
+                    {
+                        <li>@gameFeature.GameFeatureText</li>
+                    }
                 </ul>
             </section>
 
             <section>
                 <h2>Screenshots</h2>
                 <div class="gallery">
-                    <img src="/images/game-screenshot.jpg" alt="">
-                    <img src="/images/game-screenshot.jpg" alt="">
-                    <img src="/images/game-screenshot.jpg" alt="">
+                    @foreach (var screenshot in Model.GameScreenshots)
+                    {
+                        <img src="@screenshot.GameScreenshotUrl" alt="@screenshot.GameScreenshotDescription">
+                    }
                 </div>
             </section>
 
@@ -66,18 +68,25 @@
 
         <!-- SIDEBAR -->
         <div class="col">
-            <div class="price">$9.99</div>
-            <a href="#" class="button">Download Now</a>
+            <div class="price">@Model.RetailPrice</div>
+            <a href="@Model.DownloadUrl" class="button">Download Now</a>
             <a href="#" class="button" style="background:#333;">Add to Collection</a>
 
             <div class="meta">
-                <p><strong>Status:</strong> Released</p>
-                <p><strong>Platform:</strong> Windows, Mac</p>
-                <p><strong>Author:</strong> Your Studio Name</p>
-                <p><strong>Updated:</strong> Feb 2026</p>
+                <p><strong>Status:</strong> @Model.ReleaseStatus</p>
+                <p><strong>Platform:</strong> 
+                    @foreach (var platform in Model.GamePlatforms)
+                    {
+                        @platform.Platform.PlatformName
+                    }
+                </p>
+                <p><strong>Author:</strong> @Model.Author</p>
+                <p><strong>Updated:</strong> @Model.LastUpdated</p>
             </div>
         </div>
 
     </div>
 
 </div>
+
+

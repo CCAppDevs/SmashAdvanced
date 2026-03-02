@@ -21,6 +21,24 @@
             <th>
                 @Html.DisplayNameFor(model => model.Requirements)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Version)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Author)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RetailPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DownloadUrl)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastUpdated)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReleaseStatus)
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -35,6 +53,24 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Requirements)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Version)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Author)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RetailPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DownloadUrl)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastUpdated)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReleaseStatus)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.GameId">Edit</a> |
