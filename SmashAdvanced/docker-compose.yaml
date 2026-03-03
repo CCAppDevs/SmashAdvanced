@@ -1,0 +1,37 @@
+﻿services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: sqlserver
+    restart: unless-stopped
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_PID: "Development"
+      SA_PASSWORD: "Toast123!"
+    ports:
+      - "1433:1433"
+    volumes:
+      - sql_data:/var/opt/mssql
+    networks:
+      - app-network
+
+  web:
+    image: jesseharlan/aspnetmvc:latest
+    container_name: aspnetmvc_app
+    restart: unless-stopped
+    depends_on:
+      - sqlserver
+    environment:
+      ASPNETCORE_ENVIRONMENT: "Development"
+      ConnectionStrings__DefaultConnection: "Server=sqlserver,1433;Database=MyAppDb;User Id=sa;Password=Toast123!;TrustServerCertificate=True;"
+    ports:
+      - "5000:8080"
+      - "5001:8081"
+    networks:
+      - app-network
+
+volumes:
+  sql_data:
+
+networks:
+  app-network:
+    driver: bridge
